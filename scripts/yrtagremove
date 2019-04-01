@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# removes the YR2013 tag from the year column of each csv file
+for i in `find ./dwdm-dataset/transpose -name "*.csv"`; do
+    sed -i 's/.\{8\}//' $i
+    sed -i 's/\]//' $i
+done
