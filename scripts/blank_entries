@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for i in `find ./ -name "*.csv"`; do
+    sed -i 's/\.\.//g' $i
+done
+

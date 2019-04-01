@@ -1,0 +1,7 @@
+#!/bin/bash
+
+mkdir dwdm-dataset/transpose
+for i in `find ./dwdm-dataset -name "*.csv"`; do
+    ofile="./dwdm-dataset/transpose/"`basename $i .csv`"-transpose.csv"
+    python ./scripts/transpose.py $i $ofile
+done

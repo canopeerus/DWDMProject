@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for i in `find ./dwdm-dataset/transpose -name "*.csv"`; do
+    sed -i '2,6d' $i
+done

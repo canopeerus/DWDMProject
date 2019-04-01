@@ -1,0 +1,1 @@
+gdp - GDP (constant 2010 USD)
