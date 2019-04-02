@@ -1,0 +1,4 @@
+#!/bin/bash
+
+Rscript R/plot.R
+mv rplot.jpg static/images/
