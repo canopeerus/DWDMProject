@@ -1,0 +1,6 @@
+#!/bin/bash
+for i in `find ./dwdm-dataset/transpose -name "*.csv"`; do
+    awk -F, -vOFS=, '{NF-=5;print}' $i > newfile.csv
+    mv newfile.csv $i
+done
+rm newfile.csv
