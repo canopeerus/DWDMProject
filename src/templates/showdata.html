@@ -3,11 +3,18 @@
     <head>
         <meta charset="UTF-8">
         <title>Data View</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='style/bootstrap.css')}}">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/
+            jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/
+            bootstrap.min.js"></script>
     </head>
     <body>
+        <div class="container">
         <center>
-            <h1>Dataset View</h1>
-            <table>
+            <h1>{{ metric }} Statistics for {{ country }}</h1>
+            <table class="table" align="center">
                 <thead>
                     <th>Year</th>
                     <th> {{ metric }}</th>
@@ -23,5 +30,6 @@
                 </tbody>
             </table>
         </center>
+        </div>
     </body>
 </html>
