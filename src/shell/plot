@@ -1,4 +1,7 @@
 #!/bin/bash
 
-Rscript R/plot.R
+CNTRY=`echo $2 | sed 's/ /\./g' | sed 's/\,/\./g' | sed 's/\-/\./g'`
+
+sed  "s|METRICFILE|${1}|" R/plot.R | sed "s|COUNTRY|${CNTRY}|" | 
+    sed "s|METRIC|${3}|" | R --no-save
 mv rplot.jpg static/images/

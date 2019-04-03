@@ -15,11 +15,17 @@
                     {% endfor %}
                 </select>
                 <br><br>
-                <b><font size="4">Select metric</font></b> &nbsp;
+                <b><font size="4">Select Metric</font></b> &nbsp;
                 <select name='metric'>
                     {% for value in m %}
                         <option value="{{ value }}">{{ value }}</option>
                     {% endfor %}
+                </select>
+                <br><br>
+                <b><font size="4">Select action</font></b> &nbsp;
+                <select name='d_action'>
+                    <option value="plot">Plot data</option>
+                    <option value="view">View data</option>
                 </select>
             <br><br>
             <input type="submit" name="submit" id="submit" value="show"/>
