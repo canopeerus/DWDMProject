@@ -32,9 +32,10 @@ def add_header (response):
 @app.route ('/')
 def home ():
     #subprocess.call (['./shell/plot'])
-    if not os.path.isfile ("../dwdm-dataset/transpose/gdp-transpose.csv"):
+    if not os.path.isfile (pathprefix + 
+            "/dwdm-dataset/transpose/gdp-transpose.csv"):
         print ("error")
-    f = open ("../dwdm-dataset/transpose/gdp-transpose.csv","r")
+    f = open (pathprefix + "/dwdm-dataset/transpose/gdp-transpose.csv","r")
     reader = csv.reader (f,delimiter=',')
     cols = next (reader)
     cols = cols [1:]
