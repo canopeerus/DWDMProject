@@ -1,4 +1,4 @@
-jpeg ("rplot.jpg", width = 350, heigh = 350)
+jpeg ("rplot.jpg", width = 550, heigh = 550)
 metricfile = "METRICFILE"
 rawdata = read.csv (metricfile)
 
