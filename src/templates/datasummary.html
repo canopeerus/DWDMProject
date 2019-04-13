@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static',filename='style/bootstrap.css')}}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <title>Dashboard</title>
+        <style>
+            body {
+                font-family:"Roboto"
+            }
+        </style>
+
+    </head>
+    <body>
+        <form method="post" action="/showsummary">
+            <center>
+                <h1>Viewing dashboard</h1>
+                <b><font size="4">Select Country</font></b> &nbsp;
+                <select name='country'>
+                    {% for value in countries %}
+                    <option value="{{ value }}">{{ value }}</option>
+                    {% endfor %}
+                </select>
+                <br><br>
+                <b><font size="4">Select Metric</font></b> &nbsp;
+                <select name='metric'>
+                    {% for value in m %}
+                    <option value="{{ value }}">{{ value }}</option>
+                    {% endfor %}
+                </select>
+                <br><br>
+                <b><font size="4">Select action</font></b> &nbsp;
+                <select name='d_action'>
+                    <option value="plot">Plot data</option>
+                    <option value="view">View data</option>
+                </select>
+                <br><br>
+                <input type="submit" name="submit" id="submit" value="show"/>
+        </form>
+    </body>
+</html>

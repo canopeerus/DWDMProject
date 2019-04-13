@@ -2,33 +2,38 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Dashboard</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <title>DWDM Project Homepage</title>
+        <style>
+body {
+    font-family:"Roboto"
+}
+        </style>
+
     </head>
     <body>
-        <form method="post" action="/show">
-            <center>
-                <h1>Viewing dashboard</h1>
-                <b><font size="4">Select Country</font></b> &nbsp;
-                <select name='country'>
-                    {% for value in countries %}
-                        <option value="{{ value }}">{{ value }}</option>
-                    {% endfor %}
-                </select>
-                <br><br>
-                <b><font size="4">Select Metric</font></b> &nbsp;
-                <select name='metric'>
-                    {% for value in m %}
-                        <option value="{{ value }}">{{ value }}</option>
-                    {% endfor %}
-                </select>
-                <br><br>
-                <b><font size="4">Select action</font></b> &nbsp;
-                <select name='d_action'>
-                    <option value="plot">Plot data</option>
-                    <option value="view">View data</option>
-                </select>
+        <center>
             <br><br>
-            <input type="submit" name="submit" id="submit" value="show"/>
-        </form>
+            <h1>Prediction of Growth of Nations using Time Series
+                Forecasting</h1>
+            <br><br><br>
+            <p style="padding-left:150px;padding-right:150px">
+            <font size="5">This project aims to demonstrate a Time Series Forecasting
+                Model implemented in R programming language. The model will predict future
+                values of various metrics of a country such as GDP,population,national
+                income etc. </font></p>
+            <br><br><br>
+            <form method="post" action="/show">
+                <select name='operation'>
+                    <option value="summary">Dataset Summary</option>
+                    <option value="forecast">Run forecast model</option>
+                </select>
+                <br><br>
+                <button type="submit" class="btn btn-secondary">Submit</button>
+            </form>
+        </center>
     </body>
 </html>

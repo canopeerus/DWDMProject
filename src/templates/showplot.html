@@ -9,13 +9,21 @@
             jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/
             bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
     </head>
     <body>
         <div class="container">
         <center>
             <h1>{{ metric }} Plot for {{ country }}</h1>
                 <img src="static/images/rplot.jpg"/>
-        </center>
+                <br><br>
+                </center>
+                <p >
+                    <pre class="prettyprint">
+                    {{ stdoutput }}
+                    </pre>
+                </p>
         </div>
     </body>
 </html>

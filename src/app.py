@@ -2,7 +2,7 @@
 
 from flask import Flask,render_template,redirect,session,abort,request,flash
 import os,pickle
-import subprocess,csv,glob
+import subprocess,csv,glob,datetime
 
 pathprefix = "/home/canopy/college/sem-6/lab/dwdm-lab/project"
 
@@ -29,20 +29,25 @@ def add_header (response):
     response.headers['Pragma'] = 'no-cache'
     return response
 
-@app.route ('/')
-def home ():
-    #subprocess.call (['./shell/plot'])
-    if not os.path.isfile (pathprefix + 
-            "/dwdm-dataset/transpose/gdp-transpose.csv"):
-        print ("error")
-    f = open (pathprefix + "/dwdm-dataset/transpose/gdp-transpose.csv","r")
-    reader = csv.reader (f,delimiter=',')
-    cols = next (reader)
-    cols = cols [1:]
-    f.close ()
-    return render_template ("index.html",countries = cols, m = metrics)
+@app.route('/')
+def indexpage():
+    return render_template("index.html")
 
-@app.route('/show', methods=['GET','POST'])
+@app.route('/show',methods=['GET','POST'])
+def homepage_actual():
+    selected_op = request.form.get('operation')
+    f = open (pathprefix + "/dwdm-dataset/transpose/gdp-transpose.csv","r")
+    reader = csv.reader(f,delimiter=',')
+    cols = next(reader)
+    cols = cols[1:]
+    f.close()
+    if selected_op == 'summary':
+        return render_template('datasummary.html',countries=cols,m = metrics)
+    elif selected_op == 'forecast':
+        return "Forecast"
+
+
+@app.route('/showsummary', methods=['GET','POST'])
 def showdata():
     selected_c = request.form.get('country')
     selected_m = request.form.get('metric')
@@ -63,10 +68,16 @@ def showdata():
         return render_template("showdata.html", data=finaldata,
                 metric=selected_m,country=selected_c)
     elif selected_a == 'plot':
-        print (metric_file_map[selected_m]+","+selected_c+","+selected_m)
-        proc = subprocess.call(['./shell/plot',metric_file_map[selected_m],
-                selected_c,selected_m])
-        return render_template("showplot.html",metric=selected_m,country=selected_c)
+        
+        procres = subprocess.run(['./shell/plot',metric_file_map[selected_m],
+                selected_c,selected_m],stdout=subprocess.PIPE)
+       
+        logf = open('./logs/log.txt','a+')
+        logf.write("\n\nLog of app run at time "+str(datetime.datetime.now()) + '\n')
+        logf.write(procres.stdout.decode())
+        logf.close()
+
+        return render_template("showplot.html",metric=selected_m,country=selected_c, stdoutput = procres.stdout.decode())
  
 if __name__ == "__main__":
     app.run (debug=True)
