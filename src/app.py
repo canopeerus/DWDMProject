@@ -11,8 +11,6 @@ datasetprefix = pathprefix + "/dwdm-dataset/transpose"
 files = glob.glob(pathprefix+"/dwdm-dataset/transpose/*.csv")
 
 files.sort()
-for i in files:
-    print(os.path.basename(i))
 
 metrics = ["Access to Electricity(%)","Agriculture value (% of GDP)",
         "Agricultural Land(%)","Agricultural Land Area","CO2 Emissions",
