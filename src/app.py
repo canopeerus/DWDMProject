@@ -6,14 +6,20 @@ import subprocess,csv,glob,datetime
 
 pathprefix = "/home/canopy/college/sem-6/lab/dwdm-lab/project"
 
+datasetprefix = pathprefix + "/dwdm-dataset/transpose"
+
 files = glob.glob(pathprefix+"/dwdm-dataset/transpose/*.csv")
 
-metrics = ["Female Population(%)","Agricultural Land(%)",
-        "Male Population(%)","Femaile Population","Total Population",
-        "Acces to Electricity(%)","Male Population",
-        "Agricultural Land Area","Infant Mortality Rate","National Income",
-        "GDP","Agricultural value(% of GDP)","Population Density",
-        "Population age 15-64(%)","CO2 Emission"]
+files.sort()
+for i in files:
+    print(os.path.basename(i))
+
+metrics = ["Access to Electricity(%)","Agriculture value (% of GDP)",
+        "Agricultural Land(%)","Agricultural Land Area","CO2 Emissions",
+        "Female Population","GDP","Infant Mortality Rate","National Income",
+        "Population between ages 15-64","Population Density",
+        "Female Population(%)","Male Population",
+        "Male Population(%)","Total Population"]
 
 metric_file_map = dict (zip (metrics,files))
 
@@ -41,10 +47,7 @@ def homepage_actual():
     cols = next(reader)
     cols = cols[1:]
     f.close()
-    if selected_op == 'summary':
-        return render_template('datasummary.html',countries=cols,m = metrics)
-    elif selected_op == 'forecast':
-        return "Forecast"
+    return render_template('datasummary.html',countries=cols,m = metrics)
 
 
 @app.route('/showsummary', methods=['GET','POST'])
@@ -64,20 +67,20 @@ def showdata():
     finaldata = []
     for x,y in zip (years_list,values_list):
         finaldata.append ([x,y])
-    if selected_a == 'view':
-        return render_template("showdata.html", data=finaldata,
-                metric=selected_m,country=selected_c)
-    elif selected_a == 'plot':
-        
+    if selected_a == 'summary':
         procres = subprocess.run(['./shell/plot',metric_file_map[selected_m],
                 selected_c,selected_m],stdout=subprocess.PIPE)
        
         logf = open('./logs/log.txt','a+')
-        logf.write("\n\nLog of app run at time "+str(datetime.datetime.now()) + '\n')
+        logf.write("\n\nLog of app run at time "+
+                str(datetime.datetime.now()) + '\n')
         logf.write(procres.stdout.decode())
         logf.close()
+        return render_template("showplot.html",metric=selected_m,
+                country=selected_c, stdoutput = procres.stdout.decode())
+    
+    else:
+        return "Forecast"
 
-        return render_template("showplot.html",metric=selected_m,country=selected_c, stdoutput = procres.stdout.decode())
- 
 if __name__ == "__main__":
     app.run (debug=True)
