@@ -618,3 +618,213 @@ Frequency = 1
 null device 
           1 
 > 
+
+
+Log of app run at time 2019-04-14 09:47:02.149803
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(ggplot2)
+> library(tidyverse)
+> library(ggfortify)
+> 
+> jpeg ("rplot.jpg", width = 550, heigh = 550)
+> metricfile = "/home/canopy/college/sem-6/lab/dwdm-lab/project/dwdm-dataset/transpose/pop_female_pcent-transpose.csv"
+> rawdata = read.csv (metricfile)
+> 
+> metricdata = rawdata$'Afghanistan'
+> metricdata = metricdata[!is.na(metricdata)]
+> metricdatats = ts (metricdata,frequency=1,start=c(1970,1))
+> print (metricdatats)
+Time Series:
+Start = 1970 
+End = 2019 
+Frequency = 1 
+ [1] 48.99677 49.04355 49.08704 49.12515 49.15512 49.17544 49.18672 49.18991
+ [9] 49.18493 49.17126 49.14879 49.11373 49.06548 49.01080 48.96128 48.92597
+[17] 48.91589 48.92689 48.93530 48.90825 48.82922 48.69573 48.53480 48.38678
+[25] 48.28705 48.24799 48.27117 48.33999 48.42537 48.48882 48.50646 48.47026
+[33] 48.39801 48.32012 48.27131 48.26951 48.31926 48.40617 48.50569 48.58540
+[41] 48.62477 48.61892 48.58025 48.52650 48.48001 48.45456 48.45220 48.46651
+[49] 48.49146 48.51853
+> #autoplot (metricdatats)
+> plot.ts(metricdatats,xlab="Time",ylab="Female Population(%)")
+> dev.off()
+null device 
+          1 
+> 
+
+
+Log of app run at time 2019-04-14 09:58:16.422950
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(ggplot2)
+> library(tidyverse)
+> library(ggfortify)
+> 
+> jpeg ("rplot.jpg", width = 550, heigh = 550)
+> metricfile = "/home/canopy/college/sem-6/lab/dwdm-lab/project/dwdm-dataset/transpose/pop_density-transpose.csv"
+> rawdata = read.csv (metricfile)
+> 
+> metricdata = rawdata$'Argentina'
+> metricdata = metricdata[!is.na(metricdata)]
+> metricdatats = ts (metricdata,frequency=1,start=c(1970,1))
+> print (metricdatats)
+Time Series:
+Start = 1970 
+End = 2017 
+Frequency = 1 
+ [1]  8.759873  8.903617  9.055812  9.213096  9.370629  9.525001  9.674882
+ [8]  9.821560  9.967421 10.116065 10.270030 10.429886 10.594546 10.762906
+[15] 10.933246 11.104211 11.275389 11.446847 11.618238 11.789264 11.959608
+[22] 12.129221 12.297758 12.464297 12.627705 12.787277 12.942526 13.093909
+[29] 13.242855 13.391384 13.540975 13.692274 13.844962 13.998436 14.151656
+[36] 14.303954 14.455013 14.605317 14.755924 14.908304 15.063412 15.221629
+[43] 15.382356 15.544298 15.705657 15.865065 16.022067 16.176856
+> #autoplot (metricdatats)
+> plot.ts(metricdatats,xlab="Time",ylab="Female Population(%)")
+> dev.off()
+null device 
+          1 
+> 
+
+
+Log of app run at time 2019-04-14 10:01:55.960879
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(ggplot2)
+> library(tidyverse)
+> library(ggfortify)
+> 
+> jpeg ("rplot.jpg", width = 550, heigh = 550)
+> metricfile = "/home/canopy/college/sem-6/lab/dwdm-lab/project/dwdm-dataset/transpose/national_income-transpose.csv"
+> rawdata = read.csv (metricfile)
+> 
+> metricdata = rawdata$'Argentina'
+> metricdata = metricdata[!is.na(metricdata)]
+> metricdatats = ts (metricdata,frequency=1,start=c(1970,1))
+> print (metricdatats)
+Time Series:
+Start = 1970 
+End = 2016 
+Frequency = 1 
+ [1] 144517789029 159750965362 158729354623 168107186861 174097839755
+ [6] 174396317746 170512364486 179375325293 170215194391 181657774303
+[11] 188764594335 176470696397 163113648952 170562332321 174104298848
+[16] 162187215213 176670400112 178761254587 177839929915 155136962750
+[21] 156436320635 181048472330 207847871611 220267202040 232779004014
+[26] 224246447047 237430690291 250499124597 258968254349 245061825747
+[31] 244664266457 231283841928 192090885412 215141011781 238065998240
+[36] 262748660114 288401041494 323231194042 342362312100 321820794882
+[41] 360791151124 395948191274 393551629266 401794801453 386427332853
+[46] 394903873973 386325886478
+> #autoplot (metricdatats)
+> plot.ts(metricdatats,xlab="Time",ylab="National Income")
+> dev.off()
+null device 
+          1 
+> 
+
+
+Log of app run at time 2019-04-14 10:02:59.345441
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(ggplot2)
+> library(tidyverse)
+> library(ggfortify)
+> 
+> jpeg ("rplot.jpg", width = 550, heigh = 550)
+> metricfile = "/home/canopy/college/sem-6/lab/dwdm-lab/project/dwdm-dataset/transpose/national_income-transpose.csv"
+> rawdata = read.csv (metricfile)
+> 
+> metricdata = rawdata$'Austria'
+> metricdata = metricdata[!is.na(metricdata)]
+> metricdatats = ts (metricdata,frequency=1,start=c(1970,1))
+> print (metricdatats)
+Time Series:
+Start = 1970 
+End = 2016 
+Frequency = 1 
+ [1] 128786812634 134719242313 143378145551 151966531955 155121957018
+ [6] 155025436107 162028336603 169513552611 170146427595 178794194689
+[11] 180089572670 178627734380 181958638460 188528657854 188874435078
+[16] 193029754151 198306891111 202047695259 210006102051 218109664513
+[21] 227895443531 234530243341 239167130474 238994855503 244814751371
+[26] 250105809443 255604800159 259243034887 267910144739 273052201076
+[31] 283120083330 283791624644 291257159652 293971706073 302775144608
+[36] 308286470003 321029786249 331999676470 337234330847 320098314659
+[41] 326241169432 331242153274 329871546373 329083002984 331531908323
+[46] 334390103490 341456757052
+> #autoplot (metricdatats)
+> plot.ts(metricdatats,xlab="Time",ylab="National Income")
+> dev.off()
+null device 
+          1 
+> 
