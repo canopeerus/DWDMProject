@@ -19,7 +19,7 @@ if ( sum(is.na(metricdata) ) > 5 ) {
 	stopifnot (TRUE)
 }
 metricdata = na.interpolation (metricdata,option="linear")
-
+testendval = 2005
 if ( metric == "Access to Electricity(%)" ) {
     startval = 1990
     endval = 2016
@@ -80,11 +80,15 @@ if ( metric == "Access to Electricity(%)" ) {
 
 metricdata = tail (metricdata,offset) 
 
-
-metricdatats = ts (metricdata, frequency = 1, start = startval, end = endval)
+rangeval = endval - testendval
+metricdatats = ts (metricdata, frequency = 1, start = startval, end = testendval)
+actualdatats = ts (metricdata, frequency = 1,start= startval, end = endval)
 
 arimafit = auto.arima (metricdatats, approximation = FALSE,trace = TRUE)
-fcast = forecast (object =arimafit, h = 10)
+fcast = forecast (object =arimafit, h = rangeval)
 plot (fcast,ylab="Forecast for METRIC")
+dev.off()
 
+jpeg ("observedplot.jpg", width = 550, height = 550)
+plot.ts (actualdatats, ylab="Observed values for METRIC")
 dev.off()

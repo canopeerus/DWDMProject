@@ -77,7 +77,7 @@ def showdata():
         return render_template("showplot.html",metric=selected_m,
                 country=selected_c, stdoutput = procres.stdout.decode())
     
-    else:
+    elif selected_a == 'forecast':
         procres = subprocess.run(['./shell/forecast',metric_file_map[selected_m],
             selected_c,selected_m], stdout = subprocess.PIPE)
         logf = open ('./logs/log.txt', 'a+')
@@ -87,8 +87,16 @@ def showdata():
         logf.close()
         return render_template("showgenericforecast.html",metric = selected_m,
                 country = selected_c, stdoutput = procres.stdout.decode())
-
-        
+    elif selected_a == 'testforecast':
+        procres = subprocess.run(['./shell/testforecast',metric_file_map[selected_m],
+            selected_c,selected_m],stdout = subprocess.PIPE)
+        logf = open ('./logs/log.txt','a+')
+        logf.write ("\n\nLog of app run at time " +
+            str(datetime.datetime.now())+'\n')
+        logf.write (procres.stdout.decode())
+        logf.close()
+        return render_template("testforecast.html",metric = selected_m,
+            country = selected_c, stdoutput = procres.stdout.decode())
 
 if __name__ == "__main__":
     app.run (debug=True)

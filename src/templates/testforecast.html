@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Generic Forecast</title>
+        <link rel="stylesheet" 
+        href="{{ url_for('static',filename='style/bootstrap.css')}}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    </head>
+    <body>
+        <div class="container">
+        <center>
+            <h1>Test Forecast for {{ metric }} statistics for {{ country }} </h1>
+            <img src = "static/images/rforecast.jpg"/>
+            <br><br>
+            <img src = "static/images/observedplot.jpg"/>
+            <br><br>
+        </center>
+        <p>
+        <pre class="prettyprint lang-r">
+        {{ stdoutput }}
+        </pre></p>
+    </div>
+    </body>
+</html>

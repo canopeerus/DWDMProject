@@ -1,0 +1,10 @@
+#!/bin/bash
+
+CNTRY=`echo $2 | sed 's/ /\./g' | sed 's/\,/\./g' | sed 's/\-/\./g'`
+
+sed  "s|METRICFILE|${1}|" R/testforecast.R | sed "s|COUNTRY|${CNTRY}|" | 
+    sed "s|METRIC|${3}|" | R --no-save
+
+mv rforecast.jpg static/images/
+mv observedplot.jpg static/images/
+
