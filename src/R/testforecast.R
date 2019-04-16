@@ -84,7 +84,7 @@ rangeval = endval - testendval
 metricdatats = ts (metricdata, frequency = 1, start = startval, end = testendval)
 actualdatats = ts (metricdata, frequency = 1,start= startval, end = endval)
 
-arimafit = auto.arima (metricdatats, approximation = FALSE,trace = TRUE)
+arimafit = auto.arima (metricdatats, trace = TRUE,seasonal = T,D=1)
 fcast = forecast (object =arimafit, h = rangeval)
 plot (fcast,ylab="Forecast for METRIC")
 dev.off()
