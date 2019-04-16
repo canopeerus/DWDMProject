@@ -3,14 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>Data View</title>
-        <link rel="stylesheet" href="{{ url_for('static',filename='style/bootstrap.css')}}">
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/
-            jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/
-            bootstrap.min.js"></script>
+            <link rel="stylesheet" href="{{ url_for('static',filename='style/bootstrap.css')}}">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-
     </head>
     <body>
         <div class="container">
@@ -20,7 +16,7 @@
                 <br><br>
                 </center>
                 <p >
-                    <pre class="prettyprint">
+                    <pre class="prettyprint lang-r">
                     {{ stdoutput }}
                     </pre>
                 </p>

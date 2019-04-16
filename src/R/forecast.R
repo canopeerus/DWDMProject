@@ -1,23 +1,18 @@
-# Simple R template program to generate basic X-Y plots
-# the input dataset by reading data from the dataset
-# The program removes missing values/na values from
-# the input dataset brefore plotting
+# R template program to run forecast model on 
+# particular country and metric
 
+library(tseries)
+library(forecast)
+library(imputeTS)
 
-# open new file device for storing output of plot
-library (imputeTS)
-jpeg ("rplot.jpg", width = 650, height = 550)
+jpeg ("rforecast.jpg", width = 550, height = 550)
 
-metric = "METRIC"
-
-
-# read csv file
 metricfile = "METRICFILE"
+metric = "METRIC"
 rawdata = read.csv (metricfile)
 
-# extract COUNTRY's data from csv
-metricdata = rawdata$'COUNTRY'
 
+metricdata = rawdata$'COUNTRY'
 
 if ( sum(is.na(metricdata) ) > 5 ) {
 	print ("Too many missing values, cannot forecast reliably")
@@ -56,7 +51,7 @@ if ( metric == "Access to Electricity(%)" ) {
 	offset = length (metricdata)
 	startval = 1970
 	endval = 2017
-} else if ( metric == "National Income" ) {
+}  else if ( metric == "National Income" ) {
 	offset = length (metricdata)
 	startval = 1970
 	endval = 2016
@@ -82,16 +77,13 @@ if ( metric == "Access to Electricity(%)" ) {
 	endval = 2019
 }
 
+metricdata = tail (metricdata,offset) 
 
 
-# display summary of data
-#print (summary (metricdata))
+metricdatats = ts (metricdata, frequency = 1, start = startval, end = endval)
 
+arimafit = auto.arima (metricdatats, approximation = FALSE,trace = TRUE)
+fcast = forecast (object =arimafit, h = 10)
+plot (fcast,ylab="Forecast for METRIC")
 
-# generate timeseries object from dataframe object
-metricdatats = ts (metricdata,frequency=1,start= startval)
-print (metricdatats)
-
-# plot timeseries object
-plot.ts(metricdatats,xlab="Time",ylab="METRIC")
 dev.off()

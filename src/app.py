@@ -15,7 +15,7 @@ files.sort()
 metrics = ["Access to Electricity(%)","Agriculture value (% of GDP)",
         "Agricultural Land(%)","Agricultural Land Area","CO2 Emissions",
         "Female Population","GDP","Infant Mortality Rate","National Income",
-        "Population between ages 15-64","Population Density",
+        "Population Density",
         "Female Population(%)","Male Population",
         "Male Population(%)","Total Population"]
 
@@ -78,7 +78,17 @@ def showdata():
                 country=selected_c, stdoutput = procres.stdout.decode())
     
     else:
-        return "Forecast"
+        procres = subprocess.run(['./shell/forecast',metric_file_map[selected_m],
+            selected_c,selected_m], stdout = subprocess.PIPE)
+        logf = open ('./logs/log.txt', 'a+')
+        logf.write ("\n\nLog of app run at time " +
+                str(datetime.datetime.now()) + '\n')
+        logf.write (procres.stdout.decode())
+        logf.close()
+        return render_template("showgenericforecast.html",metric = selected_m,
+                country = selected_c, stdoutput = procres.stdout.decode())
+
+        
 
 if __name__ == "__main__":
     app.run (debug=True)
